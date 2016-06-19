@@ -1,5 +1,5 @@
 # waerzone
-demo: http://waerzone.com
+demo: http://demo.waerzone.com
 
 ##users: 
 admin - ghbdtn,
