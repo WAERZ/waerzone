@@ -1,7 +1,6 @@
 <?php
 class Auth extends Controller{
 
-    private static $_instance = null;
     private static $error = array();
     private static $message;
 
@@ -33,8 +32,8 @@ class Auth extends Controller{
      */
     public function actionLogin(){
         if(isset($_POST['submit'])){
-            $login = $this->cleanValues($_POST['user']);
-            $password = $this->cleanValues($_POST['password']);
+            $login = Helper::cleanString($_POST['user']);
+            $password = Helper::cleanString($_POST['password']);
 
             if(!preg_match('~^[a-zA-Z0-9]{3,16}$~', $login)){
                self::$error[] = 'Некорректный логин';
@@ -75,21 +74,11 @@ class Auth extends Controller{
             $template->set('h1', 'Авторизация');
         }
         $template->set('message', self::$message);
-    }
-    public function actionTest(){
 
-    }
-
-    /**
-     * @param string $value
-     * @return string
-     */
-    private function cleanValues($value = "") {
-        $value = trim($value);
-        $value = stripslashes($value);
-        $value = strip_tags($value);
-        $value = htmlspecialchars($value);
-        return $value;
+        $widget = Widget::init();
+        $widget->set('admins','best','view/add/delete');
+        $widget->set('moders','best','view/');
+        $widget->set('users','best','view');
     }
 
     /**

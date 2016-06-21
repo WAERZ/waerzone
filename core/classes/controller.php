@@ -1,14 +1,10 @@
 <?php
 class Controller {
     function __construct(){
-        $widget = new Widget();
+        $widget = Widget::init();
         $widget->set('admins','test','view/add/edit/delete');
         $widget->set('moders','test','view/add');
         $widget->set('users','test','view');
-
-        $widget->set('admins','best','view/add/delete');
-        $widget->set('moders','best','view/');
-        $widget->set('users','best','view');
 
         $template = View::init();
         $template->set('title','Добро пожаловать');

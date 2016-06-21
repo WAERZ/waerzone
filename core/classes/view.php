@@ -11,7 +11,7 @@ class View
 
     public static function init(){
         {
-            if (is_null(self::$instance)) {
+            if(self::$instance === null){
                 self::$instance = new self();
             }
             return self::$instance;
@@ -23,7 +23,7 @@ class View
      * @param $name
      * @return
      */
-    public static function load($name){
+    public function load($name){
         $html_file = VIEW .'default/'.$name.'.html';
         if(file_exists($html_file)){
             $html = file_get_contents($html_file);

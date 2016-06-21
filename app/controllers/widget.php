@@ -1,5 +1,17 @@
 <?php
 class Widget implements Access{
+    private static $instance = null;
+
+    final private function __construct(){}
+    final private function __clone(){}
+
+    public static function init(){
+        if(self::$instance === null){
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
     private function test($action){
         $template = View::init();
         $template->set('widget',$template->load('widget/test'));
@@ -26,5 +38,8 @@ class Widget implements Access{
             }
         }
     }
+//    private function checkAccess(){
+//
+//    }
 
 }
